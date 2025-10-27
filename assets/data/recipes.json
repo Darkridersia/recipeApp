@@ -1,0 +1,31 @@
+[
+  {
+    "id": "101",
+    "typeId": "1",
+    "name": "Spaghetti Carbonara",
+    "ingredients": ["Pasta", "Eggs", "Pancetta", "Parmesan Cheese", "Black Pepper"],
+    "steps": [
+      "Boil pasta.", 
+      "Fry pancetta.", 
+      "Mix eggs and cheese.", 
+      "Combine all."
+    ],
+    "imageName": "spaghetti.jpg" 
+  },
+  {
+    "id": "102",
+    "typeId": "2",
+    "name": "Chocolate Cake",
+    "ingredients": ["Flour", "Sugar", "Cocoa Powder", "Eggs", "Milk"],
+    "steps": ["Mix dry ingredients.", "Add wet ingredients.", "Bake at 350°F."],
+    "imageName": "cake.jpeg"
+  },
+  {
+    "id": "103",
+    "typeId": "3",
+    "name": "Bruschetta",
+    "ingredients": ["Baguette", "Tomatoes", "Garlic", "Basil", "Olive Oil"],
+    "steps": ["Toast baguette.", "Chop toppings.", "Mix and serve on bread."],
+    "imageName": "bruschetta.jpeg"
+  }
+]
