@@ -30,9 +30,9 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import recipeListScreen from './screens/recipeList';
-import recipeDetailScreen from './screens/recipeDetails';
-import addRecipeScreen from './screens/addRecipe';
+import RecipeListScreen from './screens/recipeList';
+import RecipeDetailScreen from './screens/recipeDetails';
+import AddRecipeScreen from './screens/addRecipe';
 
 export type RootStackParamList = {
   RecipeList: undefined;
@@ -49,19 +49,19 @@ function App(): React.JSX.Element {
         <Stack.Navigator initialRouteName="RecipeList">
           <Stack.Screen
             name="RecipeList"
-            component={recipeListScreen}
+            component={RecipeListScreen}
             options={{title: 'My Recipes'}}
           />
 
           <Stack.Screen
             name="RecipeDetails"
-            component={recipeDetailScreen}
+            component={RecipeDetailScreen}
             options={{title: 'Recipe Details'}}
           />
 
           <Stack.Screen
             name="AddRecipe"
-            component={addRecipeScreen}
+            component={AddRecipeScreen}
             options={{title: 'Add / Edit Recipe'}}
           />
         </Stack.Navigator>
