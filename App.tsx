@@ -75,6 +75,7 @@ const App = () => {
 
   const checkSession = React.useCallback(async () => {
     const status = await checkAuthStatus();
+    
     setIsAuthenticated(status);
     setIsLoading(false);
   }, []);
@@ -117,10 +118,10 @@ const App = () => {
 export default App;
 
 const styles = StyleSheet.create({
-    centered: {
-        flex: 1, 
-        justifyContent: 'center', 
-        alignItems: 'center', 
-        backgroundColor: '#fff'
-    }
+  centered: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+  },
 });

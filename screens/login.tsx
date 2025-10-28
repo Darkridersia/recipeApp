@@ -18,6 +18,8 @@ const LoginScreen = ({onLoginSuccess}: LoginScreenProps) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isAuthenticating, setIsAuthenticating] = useState(false);
+  const name = 'Test';
+  const pass = '123';
 
   const handleLogin = async () => {
     if (username.trim() === '' || password.trim() === '') {
@@ -27,6 +29,14 @@ const LoginScreen = ({onLoginSuccess}: LoginScreenProps) => {
     }
 
     setIsAuthenticating(true);
+
+    if (username !== name || password !== pass) {
+      Alert.alert('Error', 'Invalid username or password.');
+
+      setIsAuthenticating(false);
+
+      return;
+    }
 
     try {
       await loginUser();
