@@ -14,8 +14,6 @@ import {StackNavigationProp} from '@react-navigation/stack';
 import {Picker} from '@react-native-picker/picker';
 
 import {Recipe, RecipeType} from '../types';
-// import {loadRecipes, saveRecipes} from '../utils/storage';
-// import recipeTypesData from '../assets/data/recipeTypes.json';
 import {RootStackParamList} from '../App';
 
 import {
