@@ -2,7 +2,7 @@ This is a new [**React Native**](https://reactnative.dev) project, bootstrapped 
 
 # Getting Started
 
-Pls find the user-credentials in the login.tsx file
+:point_right: :point_right: Pls find the user-credentials in the login.tsx file :point_left: :point_left:
 
 >**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
 
