@@ -64,6 +64,8 @@ const RecipeList = () => {
 
   const navigateToDetails = (recipeId: string) => {
     console.log('Navigate to details for recipe: ', recipeId);
+
+    navigation.navigate('RecipeDetails', {recipeId});
   };
 
   const navigateToAddRecipe = () => {
@@ -76,7 +78,8 @@ const RecipeList = () => {
     <TouchableOpacity
       style={styles.itemContainer}
       onPress={() => navigateToDetails(item.id)}>
-      <Image source={recipeImgs[item.imageName]} style={styles.itemImage} />
+
+      <Image source={recipeImgs[item.imageName] ? recipeImgs[item.imageName] : require('../assets/img/default.jpeg')} style={styles.itemImage} />
 
       <View style={styles.itemTextContainer}>
         <Text style={styles.itemTitle}>{item.name}</Text>
@@ -128,7 +131,7 @@ const RecipeList = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f8f8f8', // Light background
+    backgroundColor: '#f8f8f8',
   },
   pickerContainer: {
     marginHorizontal: 10,
@@ -137,14 +140,14 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#ccc',
     borderRadius: 5,
-    backgroundColor: '#fff', // White background for picker
+    backgroundColor: '#fff',
   },
   picker: {
     height: 50,
     width: '100%',
   },
   listContentContainer: {
-    paddingBottom: 80, // Add padding at the bottom so the add button doesn't overlap the last item
+    paddingBottom: 80,
   },
   itemContainer: {
     flexDirection: 'row',
@@ -153,7 +156,7 @@ const styles = StyleSheet.create({
     marginVertical: 5,
     marginHorizontal: 10,
     borderRadius: 5,
-    elevation: 2, // Simple shadow for Android
+    elevation: 2,
     alignItems: 'center',
   },
   itemImage: {
@@ -161,21 +164,21 @@ const styles = StyleSheet.create({
     height: 60,
     borderRadius: 5,
     marginRight: 10,
-    resizeMode: 'cover', // Ensure image covers the area
+    resizeMode: 'cover',
   },
   itemTextContainer: {
-    flex: 1, // Allow text to take remaining space
+    flex: 1,
   },
   itemTitle: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#333', // Darker text color
+    color: '#333',
   },
   addButton: {
     position: 'absolute',
     bottom: 20,
     right: 20,
-    backgroundColor: '#6200ee', // Example primary color
+    backgroundColor: '#6200ee',
     width: 60,
     height: 60,
     borderRadius: 30,
@@ -186,7 +189,7 @@ const styles = StyleSheet.create({
   addButtonText: {
     color: '#fff',
     fontSize: 30,
-    lineHeight: 30, // Adjust for vertical centering if needed
+    lineHeight: 30,
   },
   centered: {
     flex: 1,
@@ -195,11 +198,10 @@ const styles = StyleSheet.create({
   },
   emptyText: {
     textAlign: 'center',
-    marginTop: 50, // More margin top
+    marginTop: 50,
     fontSize: 16,
     color: '#666',
   },
 });
 
-// 👇 Make sure this line exists at the bottom!
 export default RecipeList;
