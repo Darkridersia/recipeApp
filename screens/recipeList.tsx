@@ -13,9 +13,11 @@ import {StackNavigationProp} from '@react-navigation/stack';
 import {Picker} from '@react-native-picker/picker';
 import {Recipe, RecipeType} from '../types';
 import {RootStackParamList} from '../App';
-import {loadRecipes} from '../utils/storage';
+// import {loadRecipes} from '../utils/storage';
 import recipeImgs from '../utils/recipeImgs';
-import recipeTypeData from '../assets/data/recipeTypes.json';
+// import recipeTypeData from '../assets/data/recipeTypes.json';
+
+import { fetchAllRecipes, getRecipeTypes } from '../utils/recipeService';
 
 type RecipeListNavigationProp = StackNavigationProp<
   RootStackParamList,
@@ -37,11 +39,11 @@ const RecipeList = () => {
         setIsLoading(true);
 
         try {
-          const loadedRecipes = await loadRecipes();
+          const loadedRecipes = await fetchAllRecipes();
 
           setRecipes(loadedRecipes);
           setFilteredRecipes(loadedRecipes);
-          setRecipeTypes(recipeTypeData as RecipeType[]);
+          setRecipeTypes(getRecipeTypes());
         } catch (error) {
           console.error('Failed to fetch data', error);
         } finally {

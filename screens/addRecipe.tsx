@@ -14,9 +14,15 @@ import {StackNavigationProp} from '@react-navigation/stack';
 import {Picker} from '@react-native-picker/picker';
 
 import {Recipe, RecipeType} from '../types';
-import {loadRecipes, saveRecipes} from '../utils/storage';
-import recipeTypesData from '../assets/data/recipeTypes.json';
+// import {loadRecipes, saveRecipes} from '../utils/storage';
+// import recipeTypesData from '../assets/data/recipeTypes.json';
 import {RootStackParamList} from '../App';
+
+import {
+  fetchAllRecipes,
+  saveAllRecipes,
+  getRecipeTypes,
+} from '../utils/recipeService';
 
 type AddRecipeNavigationProp = StackNavigationProp<
   RootStackParamList,
@@ -36,7 +42,7 @@ const AddRecipe = () => {
   const [editingRecipeId, setEditingRecipeId] = useState<string | null>(null);
 
   useEffect(() => {
-    const types = recipeTypesData as RecipeType[];
+    const types = getRecipeTypes();
 
     setRecipeTypes(types);
 
@@ -53,7 +59,7 @@ const AddRecipe = () => {
 
       const loadRecipeToEdit = async () => {
         try {
-          const allRecipes = await loadRecipes();
+          const allRecipes = await fetchAllRecipes();
           const recipeToEdit = allRecipes.find(r => r.id === recipeIdToEdit);
 
           if (recipeToEdit) {
@@ -95,8 +101,8 @@ const AddRecipe = () => {
     }
 
     try {
-      const currentRecipes = await loadRecipes();
-
+      const currentRecipes = await fetchAllRecipes();
+      fetch;
       let updatedRecipes: Recipe[];
 
       if (editingRecipeId) {
@@ -118,9 +124,10 @@ const AddRecipe = () => {
           }
           return recipe;
         });
-        Alert.alert('Success', 'Recipe updated successfully!');
 
-        navigation.navigate('RecipeList');
+        Alert.alert('Success', 'Recipe updated successfully!', [
+          {text: 'OK', onPress: () => navigation.navigate("RecipeList")},
+        ]);
       } else {
         const newRecipe: Recipe = {
           id: `Recipe_${Date.now()}`,
@@ -138,10 +145,12 @@ const AddRecipe = () => {
         };
         updatedRecipes = [...currentRecipes, newRecipe];
 
-        Alert.alert('Success', 'Recipe added successfully!');
+        Alert.alert('Success', 'Recipe added successfully!', [
+        { text: 'OK', onPress: () => navigation.goBack() }
+      ]);
       }
 
-      await saveRecipes(updatedRecipes);
+      await saveAllRecipes(updatedRecipes);
     } catch (error) {
       console.error('Error saving recipe:', error);
 
